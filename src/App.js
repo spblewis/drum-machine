@@ -48,9 +48,10 @@ export default class App extends React.Component {
     return ( 
 
       <div id="drum-machine">
-
-        <h1>This'll be a drum set...</h1>
-        <div>{keys}</div>
+        <div id="display">
+          <h1>This'll be a drum set...</h1>
+          <div>{keys}</div>
+        </div>
       </div>
     )
   }
