@@ -51,6 +51,23 @@ const drumkeys = [
 
 
 
+class DrumPad extends React.Component {
+  render() {
+    return(
+      <div className="drum-pad" id={this.props.id}>
+        <p>{this.props.text}</p>
+        <audio 
+          className="clip" 
+          src={this.props.url} 
+          id={this.props.id}>
+        </audio>
+      </div>
+    )
+  }
+}
+
+
+
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -60,18 +77,22 @@ export default class App extends React.Component {
   }
 
   render() {
-    const keys = this.state.drumset.map(x => 
-                  <div className="drum-pad" id={x.id}>
-                    <p>{x.text}</p>
-                    <audio className="clip" src={x.url} id={x.text}></audio>
-                  </div>);
+
 
     return ( 
 
       <div id="drum-machine">
         <div id="display">
           <h1>This'll be a drum set...</h1>
-          <div>{keys}</div>
+          {drumkeys.map(d => (
+            <DrumPad
+              id={d.id}
+              text={d.text}
+              url={d.url}
+            />
+            ))}
+
+          
         </div>
       </div>
     )
