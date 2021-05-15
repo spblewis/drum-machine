@@ -3,31 +3,49 @@ import './App.css';
 
 const drumkeys = [
   {
-    text: 'Q'
+    text: 'Q',
+    id: 'snare',
+    url: '/sounds/snare.wav' 
   },
   {
-    text: 'W'
+    text: 'W',
+    id: '',
+    url: ''
   },
   {
-    text: 'E'
+    text: 'E',
+    id: '',
+    url: ''
   },
   {
-    text: 'A'
+    text: 'A',
+    id: '',
+    url: ''
   },
   {
-    text: 'S'
+    text: 'S',
+    id: '',
+    url: ''
   },
   {
-    text: 'D'
+    text: 'D',
+    id: '',
+    url: ''
   },
   {
-    text: 'Z'
+    text: 'Z',
+    id: '',
+    url: ''
   },
   {
-    text: 'X'
+    text: 'X',
+    id: '',
+    url: ''
   },
   {
-    text: 'C'
+    text: 'C',
+    id: '',
+    url: ''
   }
 ]
 
@@ -43,7 +61,10 @@ export default class App extends React.Component {
 
   render() {
     const keys = this.state.drumset.map(x => 
-                  <div className="drum-pad">{x.text}</div>);
+                  <div className="drum-pad" id={x.id}>
+                    <p>{x.text}</p>
+                    <audio className="clip" src={x.url} id={x.text}></audio>
+                  </div>);
 
     return ( 
 
