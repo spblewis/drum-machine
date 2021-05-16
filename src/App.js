@@ -9,54 +9,65 @@ const drumkeys = [
   },
   {
     text: 'W',
-    id: '',
-    url: ''
+    id: 'tom-low',
+    url: '/sounds/tom-high.wav'
   },
   {
     text: 'E',
-    id: '',
-    url: ''
+    id: 'tom-low',
+    url: '/sounds/tom-low.mp3'
   },
   {
     text: 'A',
-    id: '',
-    url: ''
+    id: 'rimshot',
+    url: '/sounds/rimshot.wav'
   },
   {
     text: 'S',
-    id: '',
-    url: ''
+    id: 'ride',
+    url: '/sounds/ride.mp3'
   },
   {
     text: 'D',
-    id: '',
-    url: ''
+    id: 'crash',
+    url: 'sounds/crash.mp3'
   },
   {
     text: 'Z',
-    id: '',
-    url: ''
+    id: 'shaker',
+    url: '/sounds/shaker.wav'
   },
   {
     text: 'X',
-    id: '',
-    url: ''
+    id: 'bass',
+    url: '/sounds/bass.wav'
   },
   {
     text: 'C',
-    id: '',
-    url: ''
+    id: 'cowbell',
+    url: '/sounds/cowbell.wav'
   }
 ]
 
 
 
 class DrumPad extends React.Component {
+
+  handleClick = () => {
+    this.audio.play();
+    this.audio.currentTime = 0;
+  }
+
   render() {
     return(
-      <button className="drum-pad" id={this.props.id}>
+      <button 
+        className="drum-pad" 
+        id={this.props.id}
+        onClick={this.handleClick}
+      >
         <p>{this.props.text}</p>
         <audio 
+          ref={ref => this.audio = ref}
           className="clip" 
           src={this.props.url} 
           id={this.props.id}>
@@ -89,6 +100,7 @@ export default class App extends React.Component {
               id={d.id}
               text={d.text}
               url={d.url}
+              onClick={this.handleClick}
             />
             ))}
 
