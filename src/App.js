@@ -54,14 +54,14 @@ const drumkeys = [
 class DrumPad extends React.Component {
   render() {
     return(
-      <div className="drum-pad" id={this.props.id}>
+      <button className="drum-pad" id={this.props.id}>
         <p>{this.props.text}</p>
         <audio 
           className="clip" 
           src={this.props.url} 
           id={this.props.id}>
         </audio>
-      </div>
+      </button>
     )
   }
 }
