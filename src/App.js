@@ -48,8 +48,53 @@ const drumkeys = [
     url: '/sounds/cowbell.wav'
   }
 ]
-
-
+const walkenMode = [
+  {
+    text: 'Q',
+    id: 'cowbell1',
+    url: '/sounds/cowbell.wav'
+  },
+  {
+    text: 'W',
+    id: 'cowbell2',
+    url: '/sounds/cowbell.wav'
+  },
+  {
+    text: 'E',
+    id: 'cowbell3',
+    url: '/sounds/cowbell.wav'
+  },
+  {
+    text: 'A',
+    id: 'cowbell4',
+    url: '/sounds/cowbell.wav'
+  },
+  {
+    text: 'S',
+    id: 'cowbell5',
+    url: '/sounds/cowbell.wav'
+  },
+  {
+    text: 'D',
+    id: 'cowbell6',
+    url: '/sounds/cowbell.wav'
+  },
+  {
+    text: 'Z',
+    id: 'cowbell7',
+    url: '/sounds/cowbell.wav'
+  },
+  {
+    text: 'X',
+    id: 'cowbell8',
+    url: '/sounds/cowbell.wav'
+  },
+  {
+    text: 'C',
+    id: 'cowbell9',
+    url: '/sounds/cowbell.wav'
+  }
+]
 
 class DrumPad extends React.Component {
 
@@ -70,7 +115,7 @@ class DrumPad extends React.Component {
           ref={ref => this.audio = ref}
           className="clip" 
           src={this.props.url} 
-          id={this.props.id}>
+          id={this.props.text}>
         </audio>
       </button>
     )
@@ -83,7 +128,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      drumset: drumkeys
+      drumset: drumkeys,
+      moreCowbell: false
     };
   }
 
@@ -95,7 +141,7 @@ export default class App extends React.Component {
       <div id="drum-machine">
         <div id="display">
           <h1>This'll be a drum set...</h1>
-          {drumkeys.map(d => (
+          {this.state.drumset.map(d => (
             <DrumPad
               id={d.id}
               text={d.text}
