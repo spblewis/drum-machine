@@ -116,9 +116,33 @@ const walkenMode = [
 
 class DrumPad extends React.Component {
 
-  handleClick = () => {
+  constructor(props) {
+    super(props);
+    this.handleKeyPress = this.handleKeyPress.bind(this);
+    this.playSound = this.playSound.bind(this);
+  }
+
+  componentDidMount() {
+    document.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  componentWillUnmount() {
+    document.addEventListener('keydown', this.handleKeyPress);
+  }
+
+  playSound = () => {
     this.audio.play();
     this.audio.currentTime = 0;
+  }
+
+  handleClick = () => {
+    this.playSound();
+  }
+
+  handleKeyPress = (event) => {
+    if (event.keyCode === this.props.keyCode) {
+      this.playSound();
+    }
   }
 
   render() {
@@ -127,6 +151,7 @@ class DrumPad extends React.Component {
         className="drum-pad" 
         id={this.props.id}
         onClick={this.handleClick}
+        onKeyPress={this.handleKeyPress}
       >
         <p>{this.props.text}</p>
         <audio 
@@ -165,6 +190,7 @@ export default class App extends React.Component {
               text={d.text}
               url={d.url}
               onClick={this.handleClick}
+              keyCode={d.keyCode}
             />
             ))}
 
