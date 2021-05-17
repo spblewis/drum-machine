@@ -11,7 +11,7 @@ const drumkeys = [
   {
     keyCode: 87,
     text: 'W',
-    id: 'tom-low',
+    id: 'tom-high',
     url: '/sounds/tom-high.wav'
   },
   {
@@ -120,6 +120,7 @@ class DrumPad extends React.Component {
     super(props);
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.playSound = this.playSound.bind(this);
+    this.activatePad = this.activatePad.bind(this);
   }
 
   componentDidMount() {
@@ -130,18 +131,24 @@ class DrumPad extends React.Component {
     document.addEventListener('keydown', this.handleKeyPress);
   }
 
+
   playSound = () => {
     this.audio.play();
     this.audio.currentTime = 0;
   }
 
-  handleClick = () => {
+  activatePad = () => {
     this.playSound();
+    this.props.changeDisplay(this.props.id);
+  }
+
+  handleClick = () => {
+    this.activatePad();
   }
 
   handleKeyPress = (event) => {
     if (event.keyCode === this.props.keyCode) {
-      this.playSound();
+      this.activatePad();
     }
   }
 
@@ -175,6 +182,13 @@ export default class App extends React.Component {
       moreCowbell: false,
       display: "Here's the display text"
     };
+    this.changeDisplay = this.changeDisplay.bind(this);
+  }
+
+  changeDisplay(text) {
+    this.setState({
+      display: text
+    });
   }
 
   render() {
@@ -190,8 +204,9 @@ export default class App extends React.Component {
               id={d.id}
               text={d.text}
               url={d.url}
+              keyCode={d.keyCode}              
               onClick={this.handleClick}
-              keyCode={d.keyCode}
+              changeDisplay={this.changeDisplay}
             />
             ))}
 
