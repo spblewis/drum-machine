@@ -3,46 +3,55 @@ import './App.css';
 
 const drumkeys = [
   {
+    keyCode: 81,
     text: 'Q',
     id: 'snare',
     url: '/sounds/snare.wav' 
   },
   {
+    keyCode: 87,
     text: 'W',
     id: 'tom-low',
     url: '/sounds/tom-high.wav'
   },
   {
+    keyCode: 69,
     text: 'E',
     id: 'tom-low',
     url: '/sounds/tom-low.mp3'
   },
   {
+    keyCode: 65,
     text: 'A',
     id: 'rimshot',
     url: '/sounds/rimshot.wav'
   },
   {
+    keyCode: 83,
     text: 'S',
     id: 'ride',
     url: '/sounds/ride.mp3'
   },
   {
+    keyCode: 68,
     text: 'D',
     id: 'crash',
     url: 'sounds/crash.mp3'
   },
   {
+    keyCode: 90,
     text: 'Z',
     id: 'shaker',
     url: '/sounds/shaker.wav'
   },
   {
+    keyCode: 88,
     text: 'X',
     id: 'bass',
     url: '/sounds/bass.wav'
   },
   {
+    keyCode: 67,
     text: 'C',
     id: 'cowbell',
     url: '/sounds/cowbell.wav'
@@ -50,46 +59,55 @@ const drumkeys = [
 ]
 const walkenMode = [
   {
+    keyCode: 81,
     text: 'Q',
     id: 'cowbell1',
     url: '/sounds/cowbell.wav'
   },
   {
+    keyCode: 87,
     text: 'W',
     id: 'cowbell2',
     url: '/sounds/cowbell.wav'
   },
   {
+    keyCode: 69,
     text: 'E',
     id: 'cowbell3',
     url: '/sounds/cowbell.wav'
   },
   {
+    keyCode: 65,
     text: 'A',
     id: 'cowbell4',
     url: '/sounds/cowbell.wav'
   },
   {
+    keyCode: 83,
     text: 'S',
     id: 'cowbell5',
     url: '/sounds/cowbell.wav'
   },
   {
+    keyCode: 68,
     text: 'D',
     id: 'cowbell6',
     url: '/sounds/cowbell.wav'
   },
   {
+    keyCode: 90,
     text: 'Z',
     id: 'cowbell7',
     url: '/sounds/cowbell.wav'
   },
   {
+    keyCode: 88,
     text: 'X',
     id: 'cowbell8',
     url: '/sounds/cowbell.wav'
   },
   {
+    keyCode: 67,
     text: 'C',
     id: 'cowbell9',
     url: '/sounds/cowbell.wav'
