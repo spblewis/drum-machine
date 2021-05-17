@@ -172,7 +172,8 @@ export default class App extends React.Component {
     super(props);
     this.state = {
       drumset: drumkeys,
-      moreCowbell: false
+      moreCowbell: false,
+      display: "Here's the display text"
     };
   }
 
@@ -183,7 +184,7 @@ export default class App extends React.Component {
 
       <div id="drum-machine">
         <div id="display">
-          <h1>This'll be a drum set...</h1>
+          <h1>{this.state.display}</h1>
           {this.state.drumset.map(d => (
             <DrumPad
               id={d.id}
