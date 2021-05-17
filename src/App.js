@@ -183,12 +183,28 @@ export default class App extends React.Component {
       display: "Here's the display text"
     };
     this.changeDisplay = this.changeDisplay.bind(this);
+    this.needMoreCowBell = this.needMoreCowBell.bind(this);
   }
 
   changeDisplay(text) {
     this.setState({
       display: text
     });
+  }
+
+  needMoreCowBell = () => {
+    if (this.state.moreCowbell) {
+      this.setState({
+        moreCowbell: !this.state.moreCowbell,
+        drumset: drumkeys
+      })
+    }
+    else {
+      this.setState({
+        moreCowbell: !this.state.moreCowbell,
+        drumset: walkenMode
+      })
+    }
   }
 
   render() {
@@ -199,6 +215,11 @@ export default class App extends React.Component {
       <div id="drum-machine">
         <div id="display">
           <h1>{this.state.display}</h1>
+
+          <button onClick={this.needMoreCowBell}>
+            {this.state.moreCowbell?'Less ':'More '}Cowbell!
+          </button>
+
           {this.state.drumset.map(d => (
             <DrumPad
               id={d.id}
