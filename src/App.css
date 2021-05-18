@@ -7,6 +7,20 @@ body {
     font-family: Verdana, sans-serif;
 }
 
+
+
+#drum-machine {
+    display: flex;
+    flex-direction: row;
+}
+
+#pad-grid {
+    display: grid;
+    grid-template-columns: 100px 100px 100px;
+    grid-template-rows: 100px 100px 100px;
+}
+
+
 .drum-pad {
     border-radius: 10%;
     margin: 10px;
