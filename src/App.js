@@ -57,6 +57,7 @@ const drumkeys = [
     url: '/sounds/cowbell.wav'
   }
 ]
+
 const walkenMode = [
   {
     keyCode: 81,
@@ -172,8 +173,6 @@ class DrumPad extends React.Component {
   }
 }
 
-
-
 export default class App extends React.Component {
   constructor(props) {
     super(props);
@@ -208,7 +207,6 @@ export default class App extends React.Component {
   }
 
   render() {
-
 
     return ( 
 
