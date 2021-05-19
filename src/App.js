@@ -213,15 +213,12 @@ export default class App extends React.Component {
     return ( 
 
       <div id="drum-machine">
-        <div id="display">
-          <h1>{this.state.display}</h1>
 
-          <button onClick={this.needMoreCowBell}>
-            {this.state.moreCowbell?'Less ':'More '}Cowbell!
-          </button>
+        <div id="pad-grid">
 
           {this.state.drumset.map(d => (
             <DrumPad
+              key={d.id}
               id={d.id}
               text={d.text}
               url={d.url}
@@ -231,8 +228,15 @@ export default class App extends React.Component {
             />
             ))}
 
-          
         </div>
+
+        <div id="control-panel">
+          <h2 id="display">{this.state.display}</h2>
+          <button onClick={this.needMoreCowBell}>
+            {this.state.moreCowbell?'Less ':'More '}Cowbell!
+          </button>
+        </div>
+          
       </div>
     )
   }
