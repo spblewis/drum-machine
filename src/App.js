@@ -219,6 +219,7 @@ export default class App extends React.Component {
           {this.state.drumset.map(d => (
             <DrumPad
               key={d.id}
+              id={d.id}
               text={d.text}
               url={d.url}
               keyCode={d.keyCode}              
