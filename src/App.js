@@ -129,7 +129,7 @@ class DrumPad extends React.Component {
   }
 
   componentWillUnmount() {
-    document.addEventListener('keydown', this.handleKeyPress);
+    document.removeEventListener('keydown', this.handleKeyPress);
   }
 
 
