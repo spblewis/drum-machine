@@ -1,5 +1,5 @@
 :root {
-    --pad-width: 80px;
+    --pad-width: 100px;
     --pad-height: 80px;
 }
 
@@ -27,8 +27,8 @@
 
 #pad-grid {
     display: grid;
-    grid-template-columns: 100px 100px 100px;
-    grid-template-rows: 100px 100px 100px;
+    grid-template-columns: var(--pad-width) var(--pad-width) var(--pad-width);
+    grid-template-rows: var(--pad-height) var(--pad-height) var(--pad-height);
 }
 
 #control-panel {
@@ -36,17 +36,24 @@
     flex-direction: column;
     justify-content: space-evenly;
     text-align: center;
-    width: 40%;
+    width: calc(var(--pad-width) * 3);
     border: 1px solid green;
 }
 
 .drum-pad {
     border-radius: 10%;
-    margin: 10px;
     width: var(--pad-width);
     height: var(--pad-height);
 }
 
 .drum-pad:hover {
     background-color: blanchedalmond;
+}
+
+@media screen and (max-width: 850px) {
+
+    #drum-machine {
+        flex-direction: column-reverse;
+    }
+
 }
