@@ -1,47 +1,48 @@
 import React from 'react';
+import reactDom from 'react-dom';
 import './App.css';
 
 const drumkeys = [
   {
     keyCode: 81,
     text: 'Q',
-    id: 'snare',
+    id: 'Snare',
     url: '/sounds/snare.wav' 
   },
   {
     keyCode: 87,
     text: 'W',
-    id: 'tom-high',
+    id: 'Tom-high',
     url: '/sounds/tom-high.wav'
   },
   {
     keyCode: 69,
     text: 'E',
-    id: 'tom-low',
+    id: 'Tom-low',
     url: '/sounds/tom-low.mp3'
   },
   {
     keyCode: 65,
     text: 'A',
-    id: 'rimshot',
+    id: 'Rimshot',
     url: '/sounds/rimshot.wav'
   },
   {
     keyCode: 83,
     text: 'S',
-    id: 'ride',
+    id: 'Ride',
     url: '/sounds/ride.mp3'
   },
   {
     keyCode: 68,
     text: 'D',
-    id: 'crash',
+    id: 'Crash',
     url: 'sounds/crash.mp3'
   },
   {
     keyCode: 90,
     text: 'Z',
-    id: 'shaker',
+    id: 'Shaker',
     url: '/sounds/shaker.wav'
   },
   {
@@ -53,7 +54,7 @@ const drumkeys = [
   {
     keyCode: 67,
     text: 'C',
-    id: 'cowbell',
+    id: 'Cowbell',
     url: '/sounds/cowbell.wav'
   }
 ]
@@ -115,10 +116,18 @@ const walkenMode = [
   }
 ]
 
+const activeStyle = {
+  backgroundColor: '#bc5100',
+};
+
+
 class DrumPad extends React.Component {
 
   constructor(props) {
     super(props);
+    this.state = {
+      style: {},
+    }
     this.handleKeyPress = this.handleKeyPress.bind(this);
     this.playSound = this.playSound.bind(this);
     this.activatePad = this.activatePad.bind(this);
@@ -141,6 +150,10 @@ class DrumPad extends React.Component {
   activatePad = () => {
     this.playSound();
     this.props.changeDisplay(this.props.id);
+    this.setState({
+      style: activeStyle,
+    })
+    setTimeout(() => this.setState({style: {}}), 100);
   }
 
   handleClick = () => {
@@ -160,6 +173,7 @@ class DrumPad extends React.Component {
         id={this.props.id}
         onClick={this.handleClick}
         onKeyPress={this.handleKeyPress}
+        style={this.state.style}
       >
         <p>{this.props.text}</p>
         <audio 
@@ -179,7 +193,7 @@ export default class App extends React.Component {
     this.state = {
       drumset: drumkeys,
       moreCowbell: false,
-      display: "Here's the display text"
+      display: "Drum Machine"
     };
     this.changeDisplay = this.changeDisplay.bind(this);
     this.needMoreCowBell = this.needMoreCowBell.bind(this);
@@ -229,8 +243,13 @@ export default class App extends React.Component {
         </div>
 
         <div id="control-panel">
-          <h2 id="display">{this.state.display}</h2>
-          <button onClick={this.needMoreCowBell}>
+          <div id="display-container">
+            <h2 id="display">{this.state.display}</h2>
+          </div>
+          <button 
+            id="cowbell"
+            onClick={this.needMoreCowBell}
+          >
             {this.state.moreCowbell?'Less ':'More '}Cowbell!
           </button>
         </div>
